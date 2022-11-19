@@ -2,8 +2,11 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["1000logos.net"],
-    domains: ["images.unsplash.com"],
+    domains: [
+      "1000logos.net",
+      "scontent.fjpa1-1.fna.fbcdn.net",
+      "images.unsplash.com",
+    ],
   },
   experimental: {
     appDir: true,
