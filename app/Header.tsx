@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import LogoutButton from "./LogoutButton";
+import { unstable_getServerSession } from "next-auth";
 
-function Header() {
-  const session = true;
+async function Header() {
+  const session = await unstable_getServerSession();
+
   if (session)
     return (
       <header className="sticky top-0 z-50 bg-white flex justify-between items-center p-10 shadow-sm">
