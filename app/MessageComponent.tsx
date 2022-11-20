@@ -1,11 +1,14 @@
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { Message } from "../typings";
+import TimeAgo from "react-timeago";
 
 type Props = {
   message: Message;
 };
 function MessageComponent({ message }: Props) {
-  const isUser = true;
+  const { data: session } = useSession();
+  const isUser = session?.user?.email === message.email;
 
   return (
     <div className={`flex w-fit ${isUser && "ml-auto"}`}>
@@ -42,7 +45,7 @@ function MessageComponent({ message }: Props) {
               isUser && "text-right"
             }`}
           >
-            {/* {new Date(message.created_at).toLocaleString()} */}
+            <TimeAgo date={new Date(message.created_at)} />
           </p>
         </div>
       </div>

@@ -7,6 +7,7 @@ module.exports = {
       "scontent.fjpa1-1.fna.fbcdn.net",
       "images.unsplash.com",
       "links.papareact.com",
+      "platform-lookaside.fbsbx.com",
     ],
   },
   experimental: {

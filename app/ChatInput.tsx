@@ -20,7 +20,7 @@ function ChatInput({ session }: Props) {
   const addMessage = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!input) return;
+    if (!input || !session) return;
 
     const messageToSend = input;
 
@@ -32,10 +32,9 @@ function ChatInput({ session }: Props) {
       id,
       message: messageToSend,
       created_at: Date.now(),
-      username: "Bruno Travassos",
-      profilePic:
-        "https://scontent.fjpa1-1.fna.fbcdn.net/v/t39.30808-6/312625266_5593615684018936_2244344847610948049_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeE9c-YXCptFHuwjSZjUDZFfBpSuLbSe1GMGlK4ttJ7UY7vBwVDYC9iccRyCHBpzSGeyKsVI1g9e02T5NvTMvmur&_nc_ohc=fM6qa7YAqo0AX8vIbpi&tn=jQHaeSvD73dCjYFJ&_nc_ht=scontent.fjpa1-1.fna&oh=00_AfDwdkALwvXikuI6qalG8yBdLrdcUYw-wUTIvVIkWTQKRA&oe=637D631B",
-      email: "brunnomoraaes@gmail.com",
+      username: session?.user?.name!,
+      profilePic: session?.user?.image!,
+      email: session?.user?.email!,
     };
 
     const uploadMessageToUpstash = async () => {
